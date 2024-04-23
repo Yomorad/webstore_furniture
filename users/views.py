@@ -92,7 +92,10 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 def users_cart(request):
-    return render(request, 'users/users_cart.html')   
+    context = {
+        'title': 'Home - Кабинет',
+    }
+    return render(request, 'users/users_cart.html', context)   
 
 @login_required
 def logout(request):

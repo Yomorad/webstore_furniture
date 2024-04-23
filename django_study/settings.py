@@ -86,6 +86,7 @@ WSGI_APPLICATION = 'django_study.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # its just for example
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'home',
