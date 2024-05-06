@@ -1,15 +1,3 @@
- <style>
-        pre {
-            position: relative;
-        }
-        button {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-        }
-    </style>
-
-
 <h1 align="center">Hi there, This is a store on Django, postgresql
 <img src="https://github.com/Yomorad/yomorad/blob/main/icons/pantsu-konosuba.gif" height="90"/></h1>
 
@@ -20,17 +8,12 @@
 
 <h2>база для старта:</h2>
 <h3>1)клонируй репозиторий</h3>
-<code>
-        git clone 'link'
-</code>
-```python
-git clone 'link'
-```
+
 <pre>
     <code>
         git clone 'link'
     </code>
-    <button onclick="copyCode()">Копировать код</button>
+    <button onclick="copyCode()"></button>
 </pre>
 <h3>2)создай виртуальную среду через редактор или virtualenv</h3>
 ```
