@@ -18,7 +18,7 @@ python -m venv .venv
 ```
 
 ``` python -m venv .venv .venv\Scripts\activate ```
-``` .venv\Scripts\activate ```
+// .venv\Scripts\activate 
 <h3>3)Скачай библиотеки</h3>
 ```pyth
 pip install -r requirements
