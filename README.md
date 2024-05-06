@@ -1,3 +1,15 @@
+ <style>
+        pre {
+            position: relative;
+        }
+        button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+    </style>
+
+
 <h1 align="center">Hi there, This is a store on Django, postgresql
 <img src="https://github.com/Yomorad/yomorad/blob/main/icons/pantsu-konosuba.gif" height="90"/></h1>
 
@@ -8,9 +20,18 @@
 
 <h2>база для старта:</h2>
 <h3>1)клонируй репозиторий</h3>
+<code>
+        git clone 'link'
+</code>
 ```python
 git clone 'link'
 ```
+<pre>
+    <code>
+        git clone 'link'
+    </code>
+    <button onclick="copyCode()">Копировать код</button>
+</pre>
 <h3>2)создай виртуальную среду через редактор или virtualenv</h3>
 ```
 python -m venv .venv
@@ -18,11 +39,10 @@ python -m venv .venv
 ```
 
 ```pyth python -m venv .venv```
-```pyth python -m venv .venv```
-```bash python -m venv .venv .venv\Scripts\activate ```
-// .venv\Scripts\activate 
+
+
 <h3>3)Скачай библиотеки</h3>
-```pyth
+```
 pip install -r requirements
 ```
 <h3>4)Укажи свою бд PostgreSQL в settings.py</h3>
@@ -57,3 +77,16 @@ python manage.py runserver
     <p>Обрабатывает запрос на создание заказа через форму</p>
     <p>Созданы две модели общих заказов Order и текущего заказа OrderItem и добавлены в админ-панель</p>   
 </ul>
+
+<script>
+    function copyCode() {
+        var codeBlock = document.querySelector('pre');
+        var range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        alert('Код скопирован!');
+    }
+</script>
