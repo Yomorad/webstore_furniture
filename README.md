@@ -17,7 +17,9 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-``` python -m venv .venv .venv\Scripts\activate ```
+```pyth python -m venv .venv```
+```pyth python -m venv .venv```
+```bash python -m venv .venv .venv\Scripts\activate ```
 // .venv\Scripts\activate 
 <h3>3)Скачай библиотеки</h3>
 ```pyth
