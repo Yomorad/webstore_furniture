@@ -9,7 +9,7 @@
 <h2>база для старта:</h2>
 <h3>1)клонируй репозиторий</h3>
 
-<pre>
+<pre class="position: relative">
     <code>
         git clone 'link'
     </code>
