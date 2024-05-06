@@ -9,19 +9,17 @@
 <h2>база для старта:</h2>
 <h3>1)клонируй репозиторий</h3>
 
-<pre style="display: inline-block; max-width: 100%; margin: 0; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; white-space: pre-wrap; text-align: right; overflow: auto;">
-    <code>
-        git clone 'link'
-    </code>
-    <button onclick="copyCode()"></button>
-</pre>
-<h3>2)создай виртуальную среду через редактор или virtualenv</h3>
+```bash
+git clone 'link'
 ```
+
+<h3>2)создай виртуальную среду через редактор или virtualenv</h3>
+```python
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-```pyth python -m venv .venv```
+```python -m venv .venv```
 
 
 <h3>3)Скачай библиотеки</h3>
@@ -35,7 +33,7 @@ pip install -r requirements
 <p>password_p: str = 'password_p'</p>
 
 <h3>5)База django</h3>
-```pyth
+```python
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata fixtures/goods/categories.json
