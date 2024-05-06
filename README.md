@@ -12,7 +12,7 @@
 git clone 'link'
 ```
 <h3>2)создай виртуальную среду через редактор или virtualenv</h3>
-```pyth
+```
 python -m venv .venv
 .venv\Scripts\activate
 ```
