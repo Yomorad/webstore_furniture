@@ -1,3 +1,22 @@
+<head>
+    <style>
+        pre {
+            display: inline-block;
+            max-width: 100%;
+            margin: 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+            text-align: right;
+            overflow: auto;
+        }
+        button {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <h1 align="center">Hi there, This is a store on Django, postgresql
 <img src="https://github.com/Yomorad/yomorad/blob/main/icons/pantsu-konosuba.gif" height="90"/></h1>
 
