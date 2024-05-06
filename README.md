@@ -14,18 +14,14 @@ git clone 'link'
 ```
 
 <h3>2)создай виртуальную среду через редактор или virtualenv</h3>
+
 ```bash
 python -m venv .venv
-.venv\Scripts\activate
-```
-```bash
-python -m venv .venv
-```
-```bash
 .venv\Scripts\activate
 ```
 <h3>3)Скачай библиотеки</h3>
-```
+
+```bash
 pip install -r requirements
 ```
 <h3>4)Укажи свою бд PostgreSQL в settings.py</h3>
@@ -35,7 +31,8 @@ pip install -r requirements
 <p>password_p: str = 'password_p'</p>
 
 <h3>5)База django</h3>
-```python
+
+```bash
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata fixtures/goods/categories.json
