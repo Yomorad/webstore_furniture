@@ -1,5 +1,5 @@
 """
-URL configuration for django_study project.
+URL configuration for django_app project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from django_study import settings
+from django_app import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
