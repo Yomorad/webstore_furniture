@@ -14,14 +14,16 @@ git clone 'link'
 ```
 
 <h3>2)создай виртуальную среду через редактор или virtualenv</h3>
-```python
+```bash
 python -m venv .venv
 .venv\Scripts\activate
 ```
-
-```python -m venv .venv```
-
-
+```bash
+python -m venv .venv
+```
+```bash
+.venv\Scripts\activate
+```
 <h3>3)Скачай библиотеки</h3>
 ```
 pip install -r requirements
