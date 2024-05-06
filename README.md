@@ -1,22 +1,3 @@
-<head>
-    <style>
-        pre {
-            display: inline-block;
-            max-width: 100%;
-            margin: 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            white-space: pre-wrap;
-            text-align: right;
-            overflow: auto;
-        }
-        button {
-            display: block;
-            margin-top: 10px;
-        }
-    </style>
-</head>
 <h1 align="center">Hi there, This is a store on Django, postgresql
 <img src="https://github.com/Yomorad/yomorad/blob/main/icons/pantsu-konosuba.gif" height="90"/></h1>
 
@@ -28,7 +9,7 @@
 <h2>база для старта:</h2>
 <h3>1)клонируй репозиторий</h3>
 
-<pre class="position: relative">
+<pre style="display: inline-block; max-width: 100%; margin: 0; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; white-space: pre-wrap; text-align: right; overflow: auto;">
     <code>
         git clone 'link'
     </code>
@@ -80,15 +61,3 @@ python manage.py runserver
     <p>Созданы две модели общих заказов Order и текущего заказа OrderItem и добавлены в админ-панель</p>   
 </ul>
 
-<script>
-    function copyCode() {
-        var codeBlock = document.querySelector('pre');
-        var range = document.createRange();
-        range.selectNode(codeBlock);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
-        alert('Код скопирован!');
-    }
-</script>
