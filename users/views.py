@@ -48,6 +48,7 @@ def registration(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
+            
             # отправляем письмо
             username = form.cleaned_data['username']
             email_receiver = form.cleaned_data['email']

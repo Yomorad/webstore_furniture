@@ -160,7 +160,7 @@ LOGIN_URL = '/user/login/'
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost//' # для RabbitMQ
 # CELERY_RESULT_BACKEND = 'django-db'  # Хранение результатов задач в базе данных Django
 # Автоматическое распознавание файлов задач в Django приложениях
-CELERY_IMPORTS = ('users.tasks',)
+# CELERY_IMPORTS = ('users.tasks',)
 
 # Настройки для отправки почты
 # В зависимости от того, какой SMPT сервер хотим использовать
