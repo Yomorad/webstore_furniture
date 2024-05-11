@@ -155,3 +155,46 @@ INTERNAL_IPS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/user/login/'
+
+# Настройки Celery
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost//' # для RabbitMQ
+# CELERY_RESULT_BACKEND = 'django-db'  # Хранение результатов задач в базе данных Django
+# Автоматическое распознавание файлов задач в Django приложениях
+CELERY_IMPORTS = ('users.tasks',)
+
+# Настройки для отправки почты
+# В зависимости от того, какой SMPT сервер хотим использовать
+# для отправки писем с сайта, нужно указывать соответствующий хост и порт этого сервера.
+# SMTP-сервер mail.ru
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "mr.creator-org@mail.ru"
+EMAIL_HOST_PASSWORD = "6Q8xK1qjskmA1UreNGn6"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+# gmail.com
+'''
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "your@gmail.com"
+EMAIL_HOST_PASSWORD = "password"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+'''
+'''
+# yandex.ru
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "your@yandex.ru"
+EMAIL_HOST_PASSWORD = "password"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+'''
+# для получения писем об ошибках сайта для Яндекс и mail (и других почтовых служб) обязательно
+# нужно указывать SERVER_EMAIL такой же адрес электронной почты, какой указывается в EMAIL_HOST_USER.
+# Если не будет совпадать, то письма не будут посылаться!
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
