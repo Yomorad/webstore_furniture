@@ -158,10 +158,15 @@ LOGIN_URL = '/user/login/'
 
 # Настройки Celery
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost//' # для RabbitMQ
-# CELERY_RESULT_BACKEND = 'django-db'  # Хранение результатов задач в базе данных Django
-# Автоматическое распознавание файлов задач в Django приложениях
-# CELERY_IMPORTS = ('users.tasks',)
+CELERY_CACHE_BACKEND = 'default' # Хранение результатов задач в базе данных Django
 
+# Настройка для использования PostgreSQL в качестве бэкенда кэша в Django
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table', # Название таблицы в базе данных PostgreSQL
+    }
+}
 # Настройки для отправки почты
 # В зависимости от того, какой SMPT сервер хотим использовать
 # для отправки писем с сайта, нужно указывать соответствующий хост и порт этого сервера.

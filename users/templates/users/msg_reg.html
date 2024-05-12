@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Email</title>
-    <style>
-        body {
-            background-color: #4CAF50; /* Зеленый цвет фона */
-            color: white; /* Белый цвет текста для контраста */
-            padding: 20px; /* Добавляем отступы для контента */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Email</title>
 </head>
-<body>
-    <h1>Hello, {{ content }}!</h1>
-    <p>Welcome to our platform. We are excited to have you on board.</p>
+<body style="font-family: Arial, sans-serif; background-color: #d9ecd0; padding: 20px;">
+    <table style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #fff; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 20px;">
+                <h1 style="color: #333;">Hello, {{ content }}!</h1>
+                <p style="color: #555;">Welcome to our platform. We are excited to have you on board.</p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

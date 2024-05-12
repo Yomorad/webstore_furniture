@@ -5,10 +5,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from carts.models import Cart
-from django_app import settings
 from orders.models import Order, OrderItem
 
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
+
 from users.tasks import send_email_task
 
 
@@ -48,11 +48,10 @@ def registration(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            
             # отправляем письмо
             username = form.cleaned_data['username']
             email_receiver = form.cleaned_data['email']
-            send_email_task.delay(username, email_receiver)
+            send_email_task.delay(username, [email_receiver])
 
             session_key = request.session.session_key
 
@@ -71,6 +70,7 @@ def registration(request):
         'title': 'Home - Регистрация',
         'form': form,
     }
+ 
     return render(request, 'users/registration.html', context)
 
 @login_required
