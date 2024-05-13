@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{%  load static %}
+
+{% block css%}
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+{% endblock %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock modal_cart %}
+
+
+{% block content %}
+<!-- работа с формой -->
+<div class="col-md-6 bg-white p-4 mb-4 mx-3 rounded custom-shadow">
+    <h2 class="text-center mb-4">Отправьте отзыв</h2>
+    <form action = "{% url "main:feedback" %}" method="post">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_subject_letter" class="form-label">Тема письма</label>
+            <input type="text" class="form-control" name="subject_letter" id="id_subject_letter" placeholder="Введите тему письма" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_body_letter" class="form-label">Отзыв:</label>
+            <textarea class="form-control" name="body_letter" id="id_body_letter" placeholder="Расскажите о своих впечатлениях" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark btn-block">Отправить</button>
+
+    </form>
+
+{% endblock %}
+
+
+{% block footer %}
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Контактная информация: +7 000 000 00 00, email@right.ru</p>
+        </div>
+    </footer>
+{% endblock %}

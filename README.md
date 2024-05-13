@@ -15,7 +15,7 @@
 <p>Redis</p>
 <p>DRF</p>
 
-<h2>Приложения(к каждому прикреплены тесты):</h2>
+<h2>Приложения:</h2>
 <ul class="list-style-type: disc">
     <li><h3>main</h3></li>
     <p>Обрабатывает запросы на "Главную страницу", страницу "О нас"</p>
@@ -33,16 +33,18 @@
     <p>Созданы две модели общих заказов Order и текущего заказа OrderItem и добавлены в админ-панель</p>   
 </ul>
 
-<h2>Celery/RabbitMQ используется для:</h2>
-<p>Отправки уведомлений после регистрации в приложении users</p>
-<p>Отправки сообщений в телеграмм бот при создании клиентом заказа в приложении orders</p>
+<h2>Celery/RabbitMQ:</h2>
+<p>Отправка уведомлений после регистрации в приложении users:registration </p>
+<p>Отправка отзывов через форму в приложении main:feedback</p>
+<!-- <p>Отправки сообщений в телеграмм бот при создании клиентом заказа в приложении orders</p> -->
 
-<h2>Redis используется для:</h2>
-<p>временного сохранения результатов представлений views.py в кэше redis</p>
+<h2>Redis:</h2>
+<p>временное сохранение результатов представлений views.py в кэше redis</p>
 
 <h2>DRF используется для:</h2>
 <p></p>
 
+<h2>Локальный разворот проекта</h2>
 <h3>1)клонируй репозиторий</h3>
 
 ```bash
@@ -60,20 +62,49 @@ python -m venv .venv
 ```bash
 pip install -r requirements
 ```
-<h3>4)Укажи свою бд PostgreSQL в settings.py</h3>
-<p>data_base_p: str = 'data_base_p'</p>
-<p>user_p: str = 'user_p'</p>
-<p>host_p: str = 'host_p'</p>
-<p>password_p: str = 'password_p'</p>
+<h3>4)Укажи свои конфиги и бд PostgreSQL в settings.py</h3>
+<p>DB_NAME: str = 'DB_NAME'</p>
+<p>DB_USER: str = 'DB_USER'</p>
+<p>DB_PASSWORD: str = 'DB_PASSWORD'</p>
+<p>EMAIL_HOST_USER = "EMAIL_HOST_USER"</p>
+<p>EMAIL_OWNER_USER = "EMAIL_OWNER_USER"</p>
+<p>EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"  здесь указывается не пароль а внешний ключ безопасности mail</p>
 
-<h3>5)База django</h3>
+<h3>5)База django для локального разворота</h3>
+<p>скачай и запусти rabbitmq либо просто запусти контейнер. дока: https://hub.docker.com/_/rabbitmq/</p>
+
+```bash
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+```
+<p>скачай и запусти redis либо запусти контейнер. дока: https://hub.docker.com/_/rabbitmq/</p>
+
+```bash
+sudo service redis-server start
+```
+<p>админка если надо RabbitMQ http://localhost:15672 Базовый: логин: guest, пароль: guest</p>
+<p>host_p: str = 'host_p'</p>
+<p>Делаем миграции к подключённой бд, кидаем фикстуры, суперпользователя</p>
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata fixtures/goods/categories.json
 python manage.py loaddata fixtures/goods/products.json
+python manage.py createcachetable   #создаём таблицу для кэша
 python manage.py createsuperuser
-python manage.py runserver
 ```
+<p>Запускаем в разных терминалах сайт, очереди, мониторинг</p>
 
+```bash
+#Отдельно в разных терминалах:
+    python manage.py runserver
+    celery -A django_app worker --loglevel=info -P eventlet
+    celery -A django_app flower
+```
+<p>После celery -A django_app flower, будет доступен мониторинг задач и воркеров  http://localhost:5555/workers/</p>
+
+<h2>Тестирование</h2>
+
+```bash
+python manage.py test
+```

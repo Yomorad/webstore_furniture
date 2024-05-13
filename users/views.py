@@ -9,7 +9,7 @@ from orders.models import Order, OrderItem
 
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
-from users.tasks import send_email_task
+from users.tasks import send_email_reg_task
 
 
 def login(request):
@@ -51,7 +51,7 @@ def registration(request):
             # отправляем письмо
             username = form.cleaned_data['username']
             email_receiver = form.cleaned_data['email']
-            send_email_task.delay(username, [email_receiver])
+            send_email_reg_task.delay(username, [email_receiver])
 
             session_key = request.session.session_key
 

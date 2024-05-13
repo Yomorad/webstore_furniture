@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django_app import settings
 
 @shared_task
-def send_email_task(username, receiver):
+def send_email_reg_task(username, receiver):
     subject = f'Welcome to our store, {username}!'
     context = {'content': username}  # Контекст дляшаблона
     html_message  = render_to_string('users/msg_reg.html', context)  # Загрузка HTML-шаблона

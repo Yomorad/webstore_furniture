@@ -15,6 +15,9 @@ from pathlib import Path
 
 from django.conf.global_settings import AUTH_USER_MODEL, LOGIN_URL, MEDIA_ROOT, MEDIA_URL
 
+from dotenv import load_dotenv
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -90,9 +93,9 @@ DATABASES = {
     # its just for example
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'home',
-        'USER': 'home',
-        'PASSWORD': '3140',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -185,11 +188,13 @@ SESSION_CACHE_ALIAS = 'easycache'
 # SMTP-сервер mail.ru
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = "mr.creator-org@mail.ru"
-EMAIL_HOST_PASSWORD = "6Q8xK1qjskmA1UreNGn6"
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+# получатель отзывов - корпоративная почта
+EMAIL_OWNER_USER = os.getenv('EMAIL_OWNER_USER')
 # gmail.com
 '''
 EMAIL_HOST = 'smtp.gmail.com'
