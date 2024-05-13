@@ -1,11 +1,12 @@
 from django.core.paginator import Paginator
 from django.shortcuts import get_list_or_404, render
-
+from django.views.decorators.cache import cache_page
 from goods.models import Products
 from goods.utils import q_search
 
 # Create your views here.
 
+@cache_page(60)
 def catalog(request, category_slug=None):
 
     page = request.GET.get('page', 1)
@@ -36,6 +37,7 @@ def catalog(request, category_slug=None):
     }
     return render(request, 'goods/catalog.html', context)
 
+@cache_page(60)
 def product(request, product_slug):
     product = Products.objects.get(slug=product_slug)
     context = {

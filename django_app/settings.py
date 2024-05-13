@@ -160,13 +160,25 @@ LOGIN_URL = '/user/login/'
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost//' # для RabbitMQ
 CELERY_CACHE_BACKEND = 'default' # Хранение результатов задач в базе данных Django
 
-# Настройка для использования PostgreSQL в качестве бэкенда кэша в Django
+# Настройка для использования PostgreSQL в качестве бэкенда кэша результата очередей в Django
+# Сюда же кидаем redis
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'my_cache_table', # Название таблицы в базе данных PostgreSQL
+    },
+    'easycache': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://localhost:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
     }
 }
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'easycache'
+
+
 # Настройки для отправки почты
 # В зависимости от того, какой SMPT сервер хотим использовать
 # для отправки писем с сайта, нужно указывать соответствующий хост и порт этого сервера.

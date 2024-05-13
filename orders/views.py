@@ -7,9 +7,11 @@ from django.contrib.auth.decorators import login_required
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
 
+from django.views.decorators.cache import cache_page
 # Create your views here.
 
 @login_required
+@cache_page(60)
 def create_order(request):
     if request.method == 'POST':
         form = CreateOrderForm(data=request.POST)
