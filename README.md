@@ -108,3 +108,37 @@ python manage.py createsuperuser
 ```bash
 python manage.py test
 ```
+
+<h2>API Endpoints for Products</h2>
+<ul>
+  <li>
+    <strong>Список продуктов (GET):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/">http://127.0.0.1:8000/api/products/</a><br>
+    Описание: Получить список всех продуктов.
+  </li>
+  <li>
+    <strong>Получение информации о продукте (GET):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/<int:pk>/">http://127.0.0.1:8000/api/products/<int:pk>/</a><br>
+    Описание: Получить информацию о конкретном продукте по его идентификатору.
+  </li>
+  <li>
+    <strong>Частичное обновление продукта (PATCH):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/<int:pk>/partupdate/">http://127.0.0.1:8000/api/products/<int:pk>/partupdate/</a><br>
+    Описание: Частично обновить информацию о продукте по его идентификатору.
+  </li>
+  <li>
+    <strong>Удаление продукта (DELETE):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/<int:pk>/delete/">http://127.0.1:8000/api/products/<int:pk>/delete/</a><br>
+    Описание: Удалить продукт по его идентификатору.
+  </li>
+  <li>
+    <strong>Обновление продукта (PUT):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/<int:pk>/update/">http://127.0.0.1:8000/api/products/<int:pk>/update/</a><br>
+    Описание: Полностью обновить информацию о продукте по его идентификатору.
+  </li>
+  <li>
+    <strong>Создание продукта (POST):</strong><br>
+    URL: <a href="http://127.0.0.1:8000/api/products/create/">http://127.0.0.1:8000/api/products/create/</a><br>
+    Описание: Создать новый продукт.
+  </li>
+</ul>
