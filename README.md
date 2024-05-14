@@ -70,18 +70,20 @@ pip install -r requirements
 <p>EMAIL_OWNER_USER = "EMAIL_OWNER_USER"</p>
 <p>EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"  здесь указывается не пароль а внешний ключ безопасности mail</p>
 
-<h3>5)База django для локального разворота</h3>
+<h3>5)RabbitMQ запуск</h3>
 <p>скачай и запусти rabbitmq либо просто запусти контейнер. дока: https://hub.docker.com/_/rabbitmq/</p>
 
 ```bash
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 ```
+<h3>6)Redis запуск</h3>
 <p>скачай и запусти redis либо запусти контейнер. дока: https://hub.docker.com/_/rabbitmq/</p>
 
 ```bash
 sudo service redis-server start
 ```
 <p>админка если надо RabbitMQ http://localhost:15672 Базовый: логин: guest, пароль: guest</p>
+<h3>7)База django для локального разворота</h3>
 <p>Делаем миграции к подключённой бд, кидаем фикстуры, суперпользователя</p>
 
 ```bash
