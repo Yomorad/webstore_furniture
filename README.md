@@ -14,6 +14,7 @@
 <p>Celery</p>
 <p>RabbitMQ</p>
 <p>DRF</p>
+<p>Graphene</p>
 
 <h2>Приложения:</h2>
 <ul class="list-style-type: disc">
@@ -22,6 +23,7 @@
     <li><h3>goods</h3></li>
     <p>Обрабатывает запросы на страницу каталога(с пагинацией), страницу товара, поиск по каталогу</p>
     <p>Созданы две модели Categories и Products и добавлены в админ-панель</p>   
+    <p>Настроена к Products REST API(drf) через api_urls, api_views</p>   
     <li><h3>users</h3></li>
     <p>Обрабатывает запросы через формы на авторизацию/регистрацию/деавторизацию, страницу "Личный кабинет", страницу "Корзина"</p>
     <p>Отредактирована по форме модель User и добавлена в админ панель</p>   
@@ -30,7 +32,8 @@
     <p>Создана модель корзины Cart и добавлена в админ-панель</p>   
     <li><h3>orders</h3></li>
     <p>Обрабатывает запрос на создание заказа через форму</p>
-    <p>Созданы две модели общих заказов Order и текущего заказа OrderItem и добавлены в админ-панель</p>   
+    <p>Созданы две модели общих заказов Order и текущего заказа OrderItem и добавлены в админ-панель</p>
+    <p>Настроены qraphql запросы(graphene) через schema.py</p>
 </ul>
 
 <h2>Celery/RabbitMQ:</h2>
@@ -103,6 +106,7 @@ python manage.py createsuperuser
     celery -A django_app flower
 ```
 <p>После celery -A django_app flower, будет доступен мониторинг задач и воркеров  http://localhost:5555/workers/</p>
+<p>Запросы Graphql доступны по ссылке http://127.0.0.1:8000/graphql/</p>
 
 <h2>Тестирование</h2>
 
@@ -143,3 +147,69 @@ python manage.py test
     Описание: Создать новый продукт.
   </li>
 </ul>
+
+<h2>Graphql через graphene http://127.0.0.1:8000/graphql/</h2>
+<h2>OrderType</h2>
+<p>Этот тип данных представляет модель Order в GraphQL.</p>
+<h3>Поля:</h3>
+<ul>
+  <li>id: ID заказа.</li>
+  <li>user: Пользователь, совершивший заказ.</li>
+  <li>createdTimestamp: Дата и время создания заказа.</li>
+  <li>phoneNumber: Номер телефона покупателя.</li>
+  <li>requiresDelivery: Флаг, указывающий на необходимость доставки.</li>
+  <li>deliveryAddress: Адрес доставки.</li>
+  <li>paymentOnGet: Флаг, указывающий на оплату при получении.</li>
+  <li>isPaid: Флаг, указывающий на оплату заказа.</li>
+  <li>status: Статус заказа.</li>
+</ul>
+
+<h2>OrderItemType</h2>
+<p>Этот тип данных представляет модель OrderItem в GraphQL.</p>
+<h3>Поля:</h3>
+<ul>
+  <li>id: ID элемента заказа.</li>
+  <li>order: Заказ, к которому относится элемент.</li>
+  <li>product: Продукт, который был добавлен в заказ.</li>
+  <li>name: Название элемента заказа.</li>
+  <li>price: Цена элемента заказа.</li>
+  <li>quantity: Количество элементов.</li>
+  <li>createdTimestamp: Дата и время создания элемента заказа.</li>
+</ul>
+
+<h2>Использование:</h2>
+
+```bash
+query {
+  orderList {
+    id
+    user {
+      id
+      firstName
+      lastName
+    }
+    createdTimestamp
+    phoneNumber
+    requiresDelivery
+    deliveryAddress
+    paymentOnGet
+    isPaid
+    status
+  }
+  
+  orderItemList {
+    id
+    order {
+      id
+    }
+    product {
+      id
+      name
+    }
+    name
+    price
+    quantity
+    createdTimestamp
+  }
+}
+```

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django_app import settings
+from graphene_django.views import GraphQLView
+from orders import schema
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +30,8 @@ urlpatterns = [
     path('orders/', include('orders.urls', namespace='orders')),
 
     path('api/', include('goods.api_urls', namespace='api')),
+
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
 
 if settings.DEBUG:

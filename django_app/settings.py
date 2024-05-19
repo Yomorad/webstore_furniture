@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     "debug_toolbar",
     'rest_framework',
+    'graphene_django',
 
     'main',
     'goods',
@@ -221,10 +222,12 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         "rest_framework.permissions.AllowAny",
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ]
+}
+
+GRAPHENE = {
+    'SCHEMA': 'orders.schema.schema'
 }
