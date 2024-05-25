@@ -1,0 +1,14 @@
+
+FROM python:3.11.7-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN python -m pip install --upgrade pip --no-warn-script-location
+RUN pip install -r requirements.txt --no-cache-dir --no-warn-script-location
+
+COPY . .
