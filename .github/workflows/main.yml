@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - main
+      - docker_compose_local_django
 
 jobs:
   build:
