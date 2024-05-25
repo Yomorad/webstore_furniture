@@ -60,3 +60,4 @@ docker exec -it django_app_backend python manage.py createsuperuser
 # Дальше отладка, можно попробовать аналогично запустить тесты 
 docker exec -it django_app_backend python manage.py test
 ```
+
