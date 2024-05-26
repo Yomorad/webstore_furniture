@@ -60,4 +60,5 @@ docker exec -it django_app_backend python manage.py createsuperuser
 # Дальше отладка, можно попробовать аналогично запустить тесты 
 docker exec -it django_app_backend python manage.py test
 ```
-
+<h2>При измененении django проекта, образ будет пересобран и отпрвален в dockerhub</h2>
+<p>Читай main.yml</p>
