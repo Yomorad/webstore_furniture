@@ -29,7 +29,7 @@
 ### 1 Клонируем проект
 
 ```bash
-git clone <link>
+git clone https://github.com/Yomorad/webstore_furniture
 ```
 
 ### 2 Прописываем свои конфиги в .env
